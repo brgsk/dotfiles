@@ -384,3 +384,4 @@ mode "$mode_gaps_outer" {
 
 
 exec_always --no-startup-id .config/polybar/launch.sh
+exec_always --no-startup-id feh --bg-scale ~/Obrazy/tapety
