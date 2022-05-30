@@ -129,6 +129,10 @@ alias cat="bat"
 alias pip="python -m pip"
 alias pipx="python -m pipx"
 alias code="code-insiders"
+alias du="dust"
+alias df="duf"
+alias tree="broot"
+alias cd="zoxide"
 
 # send file(-s) using transfer.sh
 transfer()
@@ -257,3 +261,6 @@ export PATH="$PATH:/home/br/.local/bin"
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+
+# initiate zoxide
+eval "$(zoxide init zsh)"

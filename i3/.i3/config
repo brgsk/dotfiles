@@ -27,6 +27,8 @@ bindsym $mod+n border normal
 font xft:FiraCode Nerd Font 11
 
 bar {
+	position top
+	font pango:DejaVu Sans Mono, FontAwesome 10
 	mode hide
 	hidden_state hide
 	status_command i3status
