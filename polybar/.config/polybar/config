@@ -4,9 +4,6 @@ margin-top = 0
 margin-bottom = 0
 
 [settings]
-;https://github.com/jaagr/polybar/wiki/Configuration#application-settings
-throttle-output = 5
-throttle-output-for = 10
 screenchange-reload = true
 compositing-background = over
 compositing-foreground = over
@@ -17,12 +14,12 @@ compositing-border = over
 ; Define fallback values used by all module formats
 format-foreground = #FF0000
 format-background = #00FF00
-format-underline =
-format-overline =
-format-spacing =
-format-padding =
-format-margin =
-format-offset =
+; format-underline =
+; format-overline =
+; format-spacing =
+; format-padding =
+; format-margin =
+; format-offset =
 
 [colors]
 ; Nord theme ============
@@ -63,7 +60,7 @@ volume-max = #bf616a
 [bar/mainbar-i3]
 ;https://github.com/jaagr/polybar/wiki/Configuration
 
-monitor = ${env:MONITOR}
+monitor = ${env:MONITOR:}
 ;monitor-fallback = HDMI1
 monitor-strict = false
 override-redirect = false
@@ -99,14 +96,11 @@ module-margin-left = 0
 module-margin-right = 0
 
 ;https://github.com/jaagr/polybar/wiki/Fonts
-font-0 = "UbuntuMono Nerd Font:size=10;2"
-font-1 = "UbuntuMono Nerd Font:size=16;3"
-font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=8;1"
-font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=8;1"
-font-4 = "Font Awesome 5 Brands:pixelsize=8;1"
+font-0 = "FiraCode NF:style=Regular:scale=13"
+font-1 = "Symbols Nerd Font:style=Regular:scale=13"
 
-modules-left = i3 xwindow
-modules-center = 
+modules-left = i3 xwindow weather wireless-network 
+modules-center = kernel
 modules-right = arrow1 networkspeedup networkspeeddown arrow2 memory2 arrow3 cpu2 arrow2 pavolume arrow3 arch-aur-updates arrow2 date
 
 separator = 
@@ -282,7 +276,7 @@ format-background = ${colors.background}
 ; grey to Blue
 type = custom/text
 content = "%{T2} %{T-}"
-content-font = 2
+content-font = 1
 content-foreground = #8d62a9
 content-background = #292d3e
 
@@ -290,7 +284,7 @@ content-background = #292d3e
 ; grey to Blue
 type = custom/text
 content = "%{T2} %{T-}"
-content-font = 2
+content-font = 1
 content-foreground = #668bd7
 content-background = #8d62a9
 
@@ -298,7 +292,7 @@ content-background = #8d62a9
 ; grey to Blue
 type = custom/text
 content = "%{T2} %{T-}"
-content-font = 2
+content-font = 1
 content-foreground = #8b62a9
 content-background = #668bd7
 
@@ -459,31 +453,31 @@ format-padding = 2
 ;   %percentage% (default) - total cpu load
 ;   %percentage-cores% - load percentage for each core
 ;   %percentage-core[1-9]% - load percentage for specific core
-label-font = 3
+label-font = 1
 label = CPU: %percentage%%
 ramp-coreload-0 = ▁
-ramp-coreload-0-font = 3
+ramp-coreload-0-font = 1
 ramp-coreload-0-foreground = #aaff77
 ramp-coreload-1 = ▂
-ramp-coreload-1-font = 3
+ramp-coreload-1-font = 1
 ramp-coreload-1-foreground = #aaff77
 ramp-coreload-2 = ▃
-ramp-coreload-2-font = 3
+ramp-coreload-2-font = 1
 ramp-coreload-2-foreground = #aaff77
 ramp-coreload-3 = ▄
-ramp-coreload-3-font = 3
+ramp-coreload-3-font = 1
 ramp-coreload-3-foreground = #aaff77
 ramp-coreload-4 = ▅
-ramp-coreload-4-font = 3
+ramp-coreload-4-font = 1
 ramp-coreload-4-foreground = #fba922
 ramp-coreload-5 = ▆
-ramp-coreload-5-font = 3
+ramp-coreload-5-font = 1
 ramp-coreload-5-foreground = #fba922
 ramp-coreload-6 = ▇
-ramp-coreload-6-font = 3
+ramp-coreload-6-font = 1
 ramp-coreload-6-foreground = #ff5555
 ramp-coreload-7 = █
-ramp-coreload-7-font = 3
+ramp-coreload-7-font = 1
 ramp-coreload-7-foreground = #ff5555
 
 ################################################################################
@@ -790,7 +784,7 @@ type = internal/network
 ;interface = wlp3s0
 ;interface = enp14s0
 ;interface = enp0s31f6
-interface = enp6s0
+interface = wlp5s0
 label-connected = "%upspeed:7%"
 format-connected = <label-connected>
 format-connected-prefix = " "
@@ -806,7 +800,7 @@ type = internal/network
 ;interface = wlp3s0
 ;interface = enp14s0
 ;interface = enp0s31f6
-interface = enp6s0
+interface = wlp5s0
 label-connected = "%downspeed:7%"
 format-connected = <label-connected>
 format-connected-prefix = "  "
@@ -830,46 +824,6 @@ format-underline = #FFBB00
 
 ################################################################################
 
-[module/pavolume]
-type = custom/script
-tail = true
-label = %output%
-exec = ~/.config/polybar/scripts/pavolume.sh --listen
-click-right = exec pavucontrol
-click-left = ~/.config/polybar/scripts/pavolume.sh --togmute
-scroll-up = ~/.config/polybar/scripts/pavolume.sh --up
-scroll-down = ~/.config/polybar/scripts/pavolume.sh --down
-format-foreground = #fefefe
-format-background = #668bd7
-
-
-
-################################################################################
-
-[module/pub-ip]
-;https://linuxconfig.org/polybar-a-better-wm-panel-for-your-linux-system
-type = custom/script
-exec = ~/.config/polybar/scripts/pub-ip.sh
-interval = 100
-format-foreground = ${colors.foreground}
-format-background = ${colors.background}
-format-underline = #FFBB00
-label = %output%
-format-prefix = "  "
-format-prefix-foreground = #FFBB00
-
-################################################################################
-
-[module/release]
-type = custom/script
-exec = (lsb_release -d | awk {'print $2'} ;echo " "; lsb_release -r | awk {'print $2'}) | tr -d '\n'
-interval = 6000
-
-format-foreground = ${colors.foreground}
-format-background = ${colors.background}
-format-prefix = "  "
-format-prefix-foreground = #62FF00
-format-underline = #62FF00
 
 ################################################################################
 
@@ -881,23 +835,6 @@ content-foreground = ${colors.foreground}
 content-background =  ${colors.background}
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
-
-################################################################################
-
-[module/spotify1]
-;https://github.com/NicholasFeldman/dotfiles/blob/master/polybar/.config/polybar/spotify.sh
-type = custom/script
-exec = ~/.config/polybar/scripts/spotify1.sh
-interval = 1
-
-;format = <label>
-format-foreground = ${colors.foreground}
-format-background = ${colors.background}
-format-padding = 2
-format-underline = #0f0
-format-prefix = "  "
-format-prefix-foreground = #0f0
-label = %output:0:150%
 
 ################################################################################
 
@@ -937,43 +874,6 @@ ramp-foreground =${colors.foreground}
 
 ################################################################################
 
-[module/temperature2]
-type = custom/script
-exec = ~/.config/polybar/scripts/tempcores.sh
-interval = 2
-format-padding = 1
-format-foreground = ${colors.foreground}
-format-background = ${colors.background}
-format-underline = #C1B93E
-format-prefix-foreground = #C1B93E
-label =  %output:0:150:%
-
-################################################################################
-
-[module/xmonad]
-type = custom/script
-exec = xmonad-log
-tail = true
-format-background = ${colors.background}
-format-foreground = ${colors.foreground}
-
-################################################################################
-
-[module/uptime]
-;https://github.com/jaagr/polybar/wiki/User-contributed-modules#uptime
-type = custom/script
-exec = uptime | awk -F, '{sub(".*up ",x,$1);print $1}'
-interval = 100
-label = Uptime : %output%
-
-format-foreground = ${colors.foreground}
-format-background = ${colors.background}
-format-prefix = " "
-format-prefix-foreground = #C15D3E
-format-underline = #C15D3E
-
-################################################################################
-
 [module/volume]
 ;https://github.com/jaagr/polybar/wiki/Module:-volume
 type = internal/volume
@@ -993,11 +893,11 @@ bar-volume-foreground-5 = #40ad4b
 bar-volume-foreground-6 = #40ad4b
 bar-volume-gradient = false
 bar-volume-indicator = 
-bar-volume-indicator-font = 2
+bar-volume-indicator-font = 1
 bar-volume-fill = 
-bar-volume-fill-font = 2
+bar-volume-fill-font = 1
 bar-volume-empty = 
-bar-volume-empty-font = 2
+bar-volume-empty-font = 1
 bar-volume-empty-foreground = ${colors.foreground}
 format-volume-foreground = ${colors.foreground}
 format-volume-background = ${colors.background}
@@ -1115,12 +1015,12 @@ label = %percentage%%
 bar-width = 10
 bar-indicator = 
 bar-indicator-foreground = #fff
-bar-indicator-font = 2
+bar-indicator-font = 1
 bar-fill = 
-bar-fill-font = 2
+bar-fill-font = 1
 bar-fill-foreground = #9f78e1
 bar-empty = 
-bar-empty-font = 2
+bar-empty-font = 1
 bar-empty-foreground = #fff
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}

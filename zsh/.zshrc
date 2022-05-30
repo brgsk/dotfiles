@@ -128,6 +128,7 @@ alias la="l -ah"
 alias cat="bat"
 alias pip="python -m pip"
 alias pipx="python -m pipx"
+alias code="code-insiders"
 
 # send file(-s) using transfer.sh
 transfer()
