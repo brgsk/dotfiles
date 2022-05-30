@@ -26,6 +26,13 @@ bindsym $mod+n border normal
 # is used in the bar {} block below.
 font xft:FiraCode Nerd Font 11
 
+bar {
+	mode hide
+	hidden_state hide
+	status_command i3status
+	i3bar_command i3bar --transparency
+}
+
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
 
@@ -245,7 +252,7 @@ bindsym $mod+9 exec --no-startup-id blurlock
 
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore; sleep 1; picom --config ~/.config/picom/picom.conf -b
+exec --no-startup-id picom --config ~/.config/picom/picom.conf -b
 exec --no-startup-id manjaro-hello
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
