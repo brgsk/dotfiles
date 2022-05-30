@@ -252,7 +252,7 @@ transfer()
 # Created by `pipx` on 2022-05-18 10:39:39
 export PATH="$PATH:/home/br/.local/bin"
 
-Load pyenv automatically
+# Load pyenv automatically
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
