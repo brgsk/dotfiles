@@ -60,11 +60,18 @@ bindsym  $mod+o exec firefox
 
 exec --no-startup-id volumeicon
 bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
-#exec --no-startup-id pulseaudio
-#exec --no-startup-id pa-applet
+exec --no-startup-id pulseaudio
+exec --no-startup-id pa-applet
 #bindsym $mod+Ctrl+m exec pavucontrol
 
+# volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -c 0 -q set Master 2dB+ unmute
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -c 0 -q set Master 2dB- unmute
+bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle
+
 ################################################################################################
+
+
 
 # Screen brightness controls
 # bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
@@ -260,12 +267,14 @@ exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
+#exec --no-startup-id glava -d
 # exec --no-startup-id blueman-applet
 # exec_always --no-startup-id sbxkb
 exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
 exec --no-startup-id feh --bg-scale ~/Obrazy/tapety
 exec --no-startup-id xautolock -time 10 -locker blurlock
+exec --no-startup-id blueman-applet
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
