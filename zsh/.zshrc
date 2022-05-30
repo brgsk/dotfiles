@@ -132,7 +132,6 @@ alias code="code-insiders"
 alias du="dust"
 alias df="duf"
 alias tree="broot"
-alias cd="zoxide"
 
 # send file(-s) using transfer.sh
 transfer()
