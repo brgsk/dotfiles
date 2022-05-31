@@ -32,7 +32,7 @@ bar {
 	mode hide
 	hidden_state hide
 	status_command i3status
-	i3bar_command i3bar --transparency
+#	i3bar_command i3bar --transparency
 }
 
 # Use Mouse+$mod to drag floating windows
@@ -55,7 +55,7 @@ bindsym  $mod+o exec firefox
 #bindsym $mod+z exec --no-startup-id morc_menu
 
 ################################################################################################
-## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
+## sound-section - DO NOT EDIT if you wish to automatically upgrade 0;13Alsa -> Pulseaudio later! ##
 ################################################################################################
 
 exec --no-startup-id volumeicon
@@ -65,9 +65,9 @@ exec --no-startup-id pa-applet
 #bindsym $mod+Ctrl+m exec pavucontrol
 
 # volume
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -c 0 -q set Master 2dB+ unmute
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -c 0 -q set Master 2dB- unmute
-bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle
+#bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -c 0 -q set Master 2dB+ unmute
+#bindsym XF86AudioLowerVolume exec --no-startup-id amixer -c 0 -q set Master 2dB- unmute
+#bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle
 
 ################################################################################################
 
@@ -268,12 +268,12 @@ exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
-#exec --no-startup-id glava -d
+exec --no-startup-id glava -d
 # exec --no-startup-id blueman-applet
 # exec_always --no-startup-id sbxkb
 exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
-exec --no-startup-id feh --bg-scale ~/Obrazy/tapety
+exec --no-startup-id feh --bg-scale ~/Obrazy/tapety/rogov-OfujmCdcUa0-unsplash.jpg
 exec --no-startup-id xautolock -time 10 -locker blurlock
 exec --no-startup-id blueman-applet
 exec_always --no-startup-id ff-theme-util

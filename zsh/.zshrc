@@ -132,6 +132,7 @@ alias code="code-insiders"
 alias du="dust"
 alias df="duf"
 alias tree="broot"
+alias icat="kitty +kitten icat"
 
 # send file(-s) using transfer.sh
 transfer()
