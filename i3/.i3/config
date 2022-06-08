@@ -43,7 +43,7 @@ floating_modifier $mod
 bindsym $mod+Return exec kitty
 
 # start mattermost
-bindysym $mod+m exec mattermost-desktop
+bindysym $alt+m exec mattermost-desktop
 
 # start glava
 bindsym $alt+g exec glava -d
@@ -84,8 +84,8 @@ exec --no-startup-id pa-applet
 
 
 # Screen brightness controls
-# bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
-# bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
+bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
 # Start Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
@@ -94,8 +94,7 @@ bindsym $mod+F3 exec pcmanfm
 # bindsym $mod+F3 exec ranger
 bindsym $mod+Shift+F3 exec pcmanfm_pkexec
 bindsym $mod+F5 exec terminal -e 'mocp'
-bindsym $mod+t exec --no-startup-id pkill picom
-bindsym $mod+Ctrl+t exec --no-startup-id picom -b
+bindsym $mod+t exec --no-startup-id picom -b
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 bindsym Print exec --no-startup-id flameshot gui
 bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
@@ -265,10 +264,11 @@ mode "resize" {
 }
 
 # Lock screen
-bindsym $mod+9 exec --no-startup-id blurlock
+#bindsym $mod+9 exec --no-startup-id blurlock
+bindsym $mod+9 exec --no-startup-id i3lock --image ~/Obrazy/tapety/eberhard-grossgasteiger-HglEta1FvXE-unsplash.jpg -u -e -k -S 2
 
 # Autostart applications
-exec --no-startup-id setxkbmap pl
+exec_always --no-startup-id setxkbmap pl
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id picom --config ~/.config/picom/picom.conf
 exec --no-startup-id manjaro-hello
@@ -280,7 +280,7 @@ exec --no-startup-id clipit
 # exec_always --no-startup-id sbxkb
 exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
-exec --no-startup-id feh --bg-scale ~/Obrazy/tapety/rogov-OfujmCdcUa0-unsplash.jpg
+exec --no-startup-id nitrogen --restore
 exec --no-startup-id xautolock -time 10 -locker blurlock
 exec --no-startup-id blueman-applet
 exec_always --no-startup-id ff-theme-util

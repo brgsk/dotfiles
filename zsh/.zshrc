@@ -128,6 +128,7 @@ alias la="l -ah"
 alias cat="bat"
 alias pip="python -m pip"
 alias pipx="python -m pipx"
+alias python="python3"
 alias code="code-insiders"
 alias du="dust"
 alias df="duf"
@@ -264,3 +265,4 @@ eval "$(pyenv init -)"
 
 # initiate zoxide
 eval "$(zoxide init zsh)"
+function gi() { curl -sLw n https://www.toptal.com/developers/gitignore/api/$@ ;}
