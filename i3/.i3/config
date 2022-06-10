@@ -49,7 +49,7 @@ bindysym $alt+m exec mattermost-desktop
 bindsym $alt+g exec glava -d
 
 # start vscode
-bindsym $mod+c exec code-insiders
+bindsym $mod+c exec code
 
 # kill focused window
 bindsym $mod+Shift+q kill
