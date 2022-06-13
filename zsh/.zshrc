@@ -130,10 +130,9 @@ alias pip="python -m pip"
 alias pipx="python -m pipx"
 alias python="python3"
 alias ipython="python -m IPython"
-alias code="code-insiders"
 alias du="dust"
 alias df="duf"
-alias tree="broot"
+alias tree="tre"
 alias icat="kitty +kitten icat"
 
 # send file(-s) using transfer.sh
