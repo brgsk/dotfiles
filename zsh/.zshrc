@@ -132,7 +132,6 @@ alias python="python3"
 alias ipython="python -m IPython"
 alias du="dust"
 alias df="duf"
-alias tree="tre"
 alias icat="kitty +kitten icat"
 
 # send file(-s) using transfer.sh
