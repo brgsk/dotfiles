@@ -133,6 +133,7 @@ alias ipython="python -m IPython"
 alias du="dust"
 alias df="duf"
 alias icat="kitty +kitten icat"
+alias lint="flakeheaven lint"
 
 # send file(-s) using transfer.sh
 transfer()
