@@ -268,7 +268,7 @@ mode "resize" {
 bindsym $mod+9 exec --no-startup-id i3lock --image ~/Obrazy/tapety/eberhard-grossgasteiger-HglEta1FvXE-unsplash.jpg -u -e -k -S 2
 
 # Autostart applications
-exec --no-startup-id setxkbmap pl
+exec_always --no-startup-id setxkbmap pl
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id picom --config ~/.config/picom/picom.conf
 exec --no-startup-id manjaro-hello
