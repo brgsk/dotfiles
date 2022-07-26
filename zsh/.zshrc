@@ -93,6 +93,7 @@ plugins=(
 	zsh-autosuggestions
 	poetry
 	k
+	timewarrior
         )
 
 source $ZSH/oh-my-zsh.sh
