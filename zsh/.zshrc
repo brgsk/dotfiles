@@ -81,20 +81,22 @@ plugins=(
         git
         bgnotify
         command-not-found
-	colored-man-pages
+        colored-man-pages
         colorize
         sudo
-	direnv
+        direnv
         git-auto-fetch
         themes
-	transfer
+        transfer
         zsh-interactive-cd
-	zsh-syntax-highlighting
-	zsh-autosuggestions
-	poetry
-	k
-	timewarrior
-        )
+        zsh-syntax-highlighting
+        zsh-autosuggestions
+        poetry
+        k
+        thefuck
+        timewarrior
+        taskwarrior
+	)
 
 source $ZSH/oh-my-zsh.sh
 
