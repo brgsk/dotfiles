@@ -94,8 +94,6 @@ plugins=(
         poetry
         k
         thefuck
-        timewarrior
-        taskwarrior
 	)
 
 source $ZSH/oh-my-zsh.sh
@@ -269,3 +267,7 @@ eval "$(pyenv init -)"
 # initiate zoxide
 eval "$(zoxide init zsh)"
 function gi() { curl -sLw n https://www.toptal.com/developers/gitignore/api/$@ ;}
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
