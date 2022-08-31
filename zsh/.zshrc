@@ -127,10 +127,10 @@ alias l="k"
 alias ls="l"
 alias la="l -ah"
 alias cat="bat"
-alias pip="python -m pip"
-alias pipx="python -m pipx"
+#alias pip="python -m pip"
+#alias pipx="python -m pipx"
 alias python="python3"
-alias ipython="python -m IPython"
+#alias ipython="python -m IPython"
 alias du="dust"
 alias df="duf"
 alias icat="kitty +kitten icat"
@@ -271,3 +271,13 @@ function gi() { curl -sLw n https://www.toptal.com/developers/gitignore/api/$@ ;
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/br/google-cloud-sdk/path.zsh.inc' ]; then . '/home/br/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/br/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/br/google-cloud-sdk/completion.zsh.inc'; fi
+
+autoload -U bashcompinit
+bashcompinit
+eval "$(register-python-argcomplete pipx)"
