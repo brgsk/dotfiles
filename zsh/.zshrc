@@ -127,15 +127,15 @@ alias l="k"
 alias ls="l"
 alias la="l -ah"
 alias cat="bat"
-#alias pip="python -m pip"
+alias pip="python -m pip"
 #alias pipx="python -m pipx"
 alias python="python3"
-#alias ipython="python -m IPython"
+alias ipython="python -m IPython"
 alias du="dust"
 alias df="duf"
 alias icat="kitty +kitten icat"
 alias lint="flakeheaven lint"
-
+alias psql="pgcli"
 # send file(-s) using transfer.sh
 transfer()
 {
@@ -278,6 +278,6 @@ if [ -f '/home/br/google-cloud-sdk/path.zsh.inc' ]; then . '/home/br/google-clou
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/br/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/br/google-cloud-sdk/completion.zsh.inc'; fi
 
-autoload -U bashcompinit
-bashcompinit
+autoload -U compinit
+compinit
 eval "$(register-python-argcomplete pipx)"
