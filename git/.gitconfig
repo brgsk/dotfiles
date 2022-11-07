@@ -1,9 +1,10 @@
 [user]
-    name = Bartosz Roguski
-    email = broguski1@gmail.com
-[core]
-    excludesfile = ~/.gitignore_global
-[pull]
-    ff = only
+	name = bartosz roguski
+	email = bartosz.roguski@4soft.co
+	signingkey = 8C2F6893FB1C4509
 [init]
-    defaultBranch = main
+	defaultBranch = main
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg2
