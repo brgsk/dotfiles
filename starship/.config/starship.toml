@@ -56,7 +56,7 @@ format = "[$duration]($style) "
 style = "yellow"
 
 [python]
-format = "[$virtualenv$symbol]($style) "
+format = "[$symbol$virtualenv]($style) "
 style = "bright-black"
 symbol = " "
 

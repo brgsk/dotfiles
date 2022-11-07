@@ -1,0 +1,9 @@
+[user]
+    name = Bartosz Roguski
+    email = broguski1@gmail.com
+[core]
+    excludesfile = ~/.gitignore_global
+[pull]
+    ff = only
+[init]
+    defaultBranch = main

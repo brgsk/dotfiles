@@ -1,6 +1,8 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+export GPG_TTY=$(tty)
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -119,7 +121,7 @@ source $ZSH/oh-my-zsh.sh
 alias l="k"
 alias ls="l"
 alias la="l -ah"
-alias cat="bat"
+#alias cat="bat"
 alias pip="python -m pip"
 #alias pipx="python -m pipx"
 alias python="python3"
