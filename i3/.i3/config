@@ -33,7 +33,7 @@ bar {
 	mode hide
 	hidden_state hide
 	status_command i3status
-#	i3bar_command i3bar --transparency
+	i3bar_command i3bar --transparency
 }
 
 # Use Mouse+$mod to drag floating windows
@@ -43,7 +43,7 @@ floating_modifier $mod
 bindsym $mod+Return exec kitty
 
 # start mattermost
-bindysym $alt+m exec mattermost-desktop
+bindsym $alt+m exec mattermost-desktop
 
 # start glava
 bindsym $alt+g exec glava -d
@@ -59,7 +59,7 @@ bindsym $mod+q kill
 bindsym $mod+d exec --no-startup-id rofi -show run
 
 # start firefox
-bindsym  $mod+o exec firefox
+bindsym  $mod+o exec google-chrome-stable
 
 # launch categorized menu
 #bindsym $mod+z exec --no-startup-id morc_menu
@@ -88,11 +88,11 @@ bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up
 bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
 # Start Applications
-bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
+#bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 #bindsym $mod+F2 exec palemoon
-bindsym $mod+F3 exec pcmanfm
+#bindsym $mod+F3 exec pcmanfm
 # bindsym $mod+F3 exec ranger
-bindsym $mod+Shift+F3 exec pcmanfm_pkexec
+#bindsym $mod+Shift+F3 exec pcmanfm_pkexec
 #bindsym $mod+F5 exec terminal -e 'mocp'
 bindsym $mod+t exec --no-startup-id picom -b
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
@@ -132,8 +132,8 @@ bindsym $mod+b workspace back_and_forth
 bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
 
 # split orientation
-bindsym $mod+h split h;exec notify-send 'tile horizontally'
-bindsym $mod+v split v;exec notify-send 'tile vertically'
+#bindsym $mod+h split h; exec notify-send 'tile horizontally'
+#bindsym $mod+v split v; exec notify-send 'tile vertically'
 #bindsym $mod+q split toggle
 
 # toggle fullscreen mode for the focused container
@@ -264,8 +264,8 @@ mode "resize" {
 }
 
 # Lock screen
-#bindsym $mod+9 exec --no-startup-id blurlock
-bindsym $mod+9 exec --no-startup-id i3lock --image ~/Obrazy/tapety/eberhard-grossgasteiger-HglEta1FvXE-unsplash.jpg -u -e -k -S 2
+bindsym $mod+9 exec --no-startup-id blurlock
+#bindsym $mod+9 exec --no-startup-id i3lock -i ~/Obrazy/tapety/unsplash-Jose Murillo.jpg
 
 # Autostart applications
 exec_always --no-startup-id setxkbmap pl
@@ -373,3 +373,23 @@ mode "$mode_gaps_outer" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
+
+# Plasma compatibility improvements
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+
+for_window [class="yakuake"] floating enable
+for_window [class="systemsettings"] floating enable
+for_window [class="plasmashell"] floating enable;
+for_window [class="Plasma"] floating enable; border none
+for_window [title="plasma-desktop"] floating enable; border none
+for_window [title="win7"] floating enable; border none
+for_window [class="krunner"] floating enable; border none
+for_window [class="Kmix"] floating enable; border none
+for_window [class="Klipper"] floating enable; border none
+for_window [class="Plasmoidviewer"] floating enable; border none
+for_window [class="(?i)*nextcloud*"] floating disable
+for_window [class="plasmashell" window_type="notification"] border none, move position 70 ppt 81 ppt
+no_focus [class="plasmashell" window_type="notification"]
+
+for_window [title="Desktop @ QRect.*"] kill; floating enable; border none

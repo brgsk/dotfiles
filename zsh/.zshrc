@@ -277,3 +277,5 @@ autoload -U compinit
 compinit
 eval "$(register-python-argcomplete pipx)"
 eval "$(starship init zsh)"
+
+screenfetch
