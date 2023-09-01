@@ -1,10 +1,6 @@
-[user]
-	name = bartosz roguski
-	email = bartosz.roguski@4soft.co
-	signingkey = 98C247A195E6E4CE
-[init]
-	defaultBranch = main
-[commit]
-	gpgsign = true
-[gpg]
-	program = gpg2
+[includeIf "gitdir:~/work/4soft/"]
+  path = ~/.gitconfig-4soft
+[includeIf "gitdir:~/personal/"]
+  path = ~/.gitconfig-personal
+[includeIf "gitdir:~/dotfiles/"]
+  path = ~/.gitconfig-personal

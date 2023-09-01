@@ -1,0 +1,23 @@
+[user]
+	name = bartosz roguski
+	email = bartosz.roguski@4soft.co
+	signingkey = 8C2F6893FB1C4509
+[core]
+	editor = nvim
+[init]
+	defaultBranch = main
+[commit]
+	gpgsign = true
+	verbose = true
+[log]
+	date = auto:human
+[color]
+	ui = true
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	light = false
+	features = decorations
+	whitespace-error-style = 22 reverse
+[gpg]
+	program = gpg2
