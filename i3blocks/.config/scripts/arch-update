@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+#
+# Copyright (C) 2017 Marcel Patzwahl
+# Licensed under the terms of the GNU GPL v3 only.
+#
+# i3blocks blocklet script to see the available updates of pacman and the AUR
 import subprocess
 from subprocess import check_output
 import argparse

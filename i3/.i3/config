@@ -28,22 +28,19 @@ bindsym $mod+n border normal
 font pango:FiraCode Nerd Font 11
 
 bar {
-#	position top
-#	font pango:DejaVu Sans Mono, FontAwesome 10
-#	mode hide
-#	hidden_state hide
-#	status_command i3status
   status_command i3blocks -c /home/$USER/.config/i3blocks/i3blocks.conf
   i3bar_command i3bar --transparency
-#  colors {
-#    background $bgcolor
-#    separator #191919
-#    #                       border          background      text
-#    focused_workspace       $bgcolor        $bgcolor        $text
-#    inactive_workspace      $in-bgcolor     $in-bgcolor     $text
-#    urgent_workspace        $u-bgcolor      $u-bgcolor      $text   
-#
-#  }
+  colors {
+        background #282A36
+        statusline #F8F8F2
+        separator  #44475A
+
+        focused_workspace  #44475A #44475A #F8F8F2
+        active_workspace   #282A36 #44475A #F8F8F2
+        inactive_workspace #282A36 #282A36 #BFBFBF
+        urgent_workspace   #FF5555 #FF5555 #F8F8F2
+        binding_mode       #FF5555 #FF5555 #F8F8F2
+  }
 }
 
 # Use Mouse+$mod to drag floating windows
@@ -287,24 +284,22 @@ bindsym $mod+9 exec /home/$USER/.config/scripts/lock
 
 
 # Autostart applications
-exec_always feh --bg-fill /home/br/Obrazy/tapety/jpg2png/laura-chouette-EGKu1O2nPEU-unsplash.png
 exec_always --no-startup-id setxkbmap pl
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id picom --config ~/.config/picom/picom.conf
-exec --no-startup-id manjaro-hello
-exec --no-startup-id nm-applet
-exec --no-startup-id xfce4-power-manager
-exec --no-startup-id pamac-tray
-exec --no-startup-id clipit
+#exec --no-startup-id picom --config ~/.config/picom/picom.conf
+#exec --no-startup-id nm-applet
+#exec --no-startup-id xfce4-power-manager
+#exec --no-startup-id pamac-tray
+#exec --no-startup-id clipit
 # exec --no-startup-id blueman-applet
 # exec_always --no-startup-id sbxkb
-exec --no-startup-id start_conky_maia
+#exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
 exec --no-startup-id nitrogen --restore
-exec --no-startup-id xautolock -time 10 -locker blurlock
-exec --no-startup-id blueman-applet
-exec_always --no-startup-id ff-theme-util
-exec_always --no-startup-id fix_xcursor
+#exec --no-startup-id xautolock -time 10 -locker blurlock
+#exec --no-startup-id blueman-applet
+#exec_always --no-startup-id ff-theme-util
+#exec_always --no-startup-id fix_xcursor
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
