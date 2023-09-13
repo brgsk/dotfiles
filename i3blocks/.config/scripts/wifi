@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+nmcli -t -f TYPE,NAME c show --active | awk -F: '/802-11-wireless:.*/ {print $2}'
