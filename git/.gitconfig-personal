@@ -2,11 +2,11 @@
 [user]
 	name = bartosz roguski
 	email = bartosz.k.roguski@gmail.com
-	signingkey = 98C247A195E6E4CE
+	signingkey = 5024B0EFE742FC8D 
 [init]
 	defaultBranch = main
 [commit]
-#	gpgsign = true
+	gpgsign = true
 [gpg]
 	program = gpg2
 [pull]

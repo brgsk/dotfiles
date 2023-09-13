@@ -267,10 +267,12 @@ mode "resize" {
 }
 
 # Lock screen
-# bindsym $mod+9 exec --no-startup-id blurlock
-bindsym $mod+9 exec --no-startup-id i3lock -i ~/Obrazy/tapety/unsplash-Jose Murillo.jpg
+bindsym $mod+9 exec /home/$USER/.config/scripts/lock
+#bindsym $mod+9 exec --no-startup-id i3lock -i /home/br/Obrazy/tapety/jpg2png/laura-chouette-EGKu1O2nPEU-unsplash.png
+
 
 # Autostart applications
+exec_always feh --bg-fill /home/br/Obrazy/tapety/jpg2png/laura-chouette-EGKu1O2nPEU-unsplash.png
 exec_always --no-startup-id setxkbmap pl
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id picom --config ~/.config/picom/picom.conf
