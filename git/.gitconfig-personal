@@ -6,7 +6,7 @@
 [init]
 	defaultBranch = main
 [commit]
-	gpgsign = true
+#	gpgsign = true
 [gpg]
 	program = gpg2
 [pull]

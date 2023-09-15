@@ -231,3 +231,5 @@ eval "$(register-python-argcomplete pipx)"
 eval "$(starship init zsh)"
 
 neofetch
+
+

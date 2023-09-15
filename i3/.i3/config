@@ -5,14 +5,17 @@
 set $mod Mod4
 set $alt Mod1
 
-# set default desktop layout (default is tiling)
-# workspace_layout tabbed <stacking|tabbed>
+mouse_warping none
+
+focus_follows_mouse no
+
+popup_during_fullscreen leave_fullscreen
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
 new_window pixel 1
 new_float normal
 
-default_border pixel 1
+default_border pixel 0
 default_floating_border normal
 
 # Hide borders
@@ -30,18 +33,33 @@ font pango:FiraCode Nerd Font 11
 bar {
   status_command i3blocks -c /home/$USER/.config/i3blocks/i3blocks.conf
   i3bar_command i3bar --transparency
-  colors {
-        background #282A36
-        statusline #F8F8F2
-        separator  #44475A
+  height 25
+  tray_padding 1
+  strip_workspace_numbers yes
 
-        focused_workspace  #44475A #44475A #F8F8F2
-        active_workspace   #282A36 #44475A #F8F8F2
-        inactive_workspace #282A36 #282A36 #BFBFBF
-        urgent_workspace   #FF5555 #FF5555 #F8F8F2
-        binding_mode       #FF5555 #FF5555 #F8F8F2
+  colors {
+      separator  #1f222d
+      background #1f222d
+      statusline #81a1c1
+
+      #                   border  background text
+      focused_workspace  #1f222d #5E81AC    #E6E6C4
+      active_workspace   #1f222d #252936    #5e81ac
+      inactive_workspace #1f222d #1f222d    #4c566a
+      urgent_workspace   #1f222d #1f222d    #ee829f
+      binding_mode       #1f222d #81a1c1    #2e3440
+    }
   }
-}
+
+# Window color settings
+# class                 border  backgr. text    indicator
+client.focused          #81a1c1 #81a1c1 #ffffff #81a1c1
+client.unfocused        #2e3440 #1f222d #888888 #1f222d
+client.focused_inactive #2e3440 #1f222d #888888 #1f222d
+client.placeholder      #2e3440 #1f222d #888888 #1f222d
+client.urgent           #900000 #900000 #ffffff #900000
+
+client.background       #242424
 
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
@@ -90,9 +108,9 @@ bindsym  $mod+o exec google-chrome-stable
 #bindsym XF86AudioPause exec playerctl pause
 #bindsym XF86AudioNext exec playerctl next
 #bindsym XF86AudioPrev exec playerctl previous
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -c 0 -q set Master 2dB+ unmute
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -c 0 -q set Master 2dB- unmute
-bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle
+bindsym XF86AudioRaiseVolume exec "amixer -q set Master 2%+ unmute; notify-send "
+bindsym XF86AudioLowerVolume exec "amixer -q set Master 2%- unmute"
+bindsym XF86AudioMute exec "amixer -q set Master toggle"
 
 ################################################################################################
 
@@ -109,7 +127,7 @@ bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness 
 # bindsym $mod+F3 exec ranger
 #bindsym $mod+Shift+F3 exec pcmanfm_pkexec
 #bindsym $mod+F5 exec terminal -e 'mocp'
-bindsym $mod+t exec --no-startup-id picom -b
+#bindsym $mod+t exec --no-startup-id picom -b
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 bindsym Print exec --no-startup-id flameshot gui
 bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
@@ -141,22 +159,34 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
+# moving containers
+bindsym $mod+Ctrl+Left move container to output left
+bindsym $mod+Ctrl+Down move container to output down
+bindsym $mod+Ctrl+Up move container to output up
+bindsym $mod+Ctrl+Right move container to output right
+
 # workspace back and forth (with/without active container)
 workspace_auto_back_and_forth yes
 bindsym $mod+b workspace back_and_forth
 bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
 
+# moving workspaces
+bindsym $mod+Ctrl+Shift+Left move workspace to output left
+bindsym $mod+Ctrl+Shift+Down move workspace to output down
+bindsym $mod+Ctrl+Shift+Up move workspace to output up
+bindsym $mod+Ctrl+Shift+Right move workspace to output right
+
 # split orientation
-#bindsym $mod+h split h; exec notify-send 'tile horizontally'
-#bindsym $mod+v split v; exec notify-send 'tile vertically'
-#bindsym $mod+q split toggle
+bindsym $mod+h split h; exec notify-send 'tile horizontally'
+bindsym $mod+v split v; exec notify-send 'tile vertically'
+bindsym $mod+t split toggle
 
 # toggle fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+bindsym $mod+s layout stacking; exec notify-send 'layout stacked'
+bindsym $mod+w layout tabbed; exec notify-send 'layout tabbed'
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
@@ -179,8 +209,8 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 #navigate workspaces next / previous
-bindsym $mod+Ctrl+Right workspace next
-bindsym $mod+Ctrl+Left workspace prev
+bindsym $mod+Tab workspace next
+#bindsym $mod+Ctrl+Left workspace prev
 
 # Workspace names
 # to display names or symbols instead of plain workspace numbers you can use
@@ -280,14 +310,13 @@ mode "resize" {
 
 # Lock screen
 bindsym $mod+9 exec /home/$USER/.config/scripts/lock
-#bindsym $mod+9 exec --no-startup-id i3lock -i /home/br/Obrazy/tapety/jpg2png/laura-chouette-EGKu1O2nPEU-unsplash.png
-
 
 # Autostart applications
 exec_always --no-startup-id setxkbmap pl
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #exec --no-startup-id picom --config ~/.config/picom/picom.conf
 exec --no-startup-id nm-applet
+exec --no-startup-id aw-qt &
 #exec --no-startup-id xfce4-power-manager
 #exec --no-startup-id pamac-tray
 #exec --no-startup-id clipit
@@ -332,23 +361,13 @@ set_from_resource $term_color13    color13
 set_from_resource $term_color14    color14
 set_from_resource $term_color15    color15
 
-# Theme colors
-# class                   border  backgr. text    indic.   child_border
-  client.focused          #556064 #556064 #80FFF9 #FDF6E3
-  client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
-  client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
-  client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
-  client.placeholder      #000000 #0c0c0c #ffffff #000000 
-
-  client.background       #2B2C2B
-
 #############################
 ### settings for i3-gaps: ###
 #############################
 
 # Set inner/outer gaps
-gaps inner 15
-gaps outer 0
+gaps inner 20
+gaps outer -10
 smart_gaps on
 smart_borders on
 
@@ -494,3 +513,8 @@ for_window [class="plasmashell" window_type="notification"] border none, move po
 no_focus [class="plasmashell" window_type="notification"]
 
 for_window [title="Desktop @ QRect.*"] kill;
+
+## assign windows to workspaces
+assign [class="Google-chrome"] 1
+assign [class="Code"] 2
+assign [class="Mattermost"] 3
