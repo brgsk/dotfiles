@@ -1,0 +1,12 @@
+#!/bin/bash
+
+INSTANCE="${BLOCK_INSTANCE:-}"
+
+# Check VPN status
+GET_VPN=$(ip route get 4.2.2.1 | grep -E -- "tun0|wg0|$INSTANCE" | awk '{ print $3 }')
+
+# Store status
+case $GET_VPN in
+    tun0|wg0|$INSTANCE) echo -e "<span color='#00FF00'>ON</span>\n";;
+    *) echo -e "<span color='#FFDD00'>OFF</span>\n";;
+esac

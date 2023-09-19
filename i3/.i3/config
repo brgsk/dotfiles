@@ -31,25 +31,26 @@ bindsym $mod+n border normal
 font pango:FiraCode Nerd Font 11
 
 bar {
-  status_command i3blocks -c /home/$USER/.config/i3blocks/i3blocks.conf
+  status_command i3blocks -c $HOME/.config/i3/i3blocks/i3blocks.conf
+  #status_command i3status -c /home/$USER/.config/i3status/i3status.conf
   i3bar_command i3bar --transparency
   height 25
   tray_padding 1
-  strip_workspace_numbers yes
+  strip_workspace_numbers no
 
   colors {
-      separator  #1f222d
-      background #1f222d
+      separator  #242D42
+      background #1a1e2a
       statusline #81a1c1
 
       #                   border  background text
-      focused_workspace  #1f222d #5E81AC    #E6E6C4
+      focused_workspace  #1f222d #5E81AC    #ececea
       active_workspace   #1f222d #252936    #5e81ac
       inactive_workspace #1f222d #1f222d    #4c566a
-      urgent_workspace   #1f222d #1f222d    #ee829f
+      urgent_workspace   #1f222d #EBCB8B    #e65765
       binding_mode       #1f222d #81a1c1    #2e3440
-    }
   }
+}
 
 # Window color settings
 # class                 border  backgr. text    indicator
@@ -65,6 +66,7 @@ client.background       #242424
 floating_modifier $mod
 
 # start a terminal
+bindsym $mod+Shift+Return exec kitty --session /home/$USER/.config/kitty/full_session.conf
 bindsym $mod+Return exec kitty
 
 # start mattermost
@@ -96,29 +98,27 @@ bindsym  $mod+o exec google-chrome-stable
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade 0;13Alsa -> Pulseaudio later! ##
 ################################################################################################
 
-#exec --no-startup-id volumeicon
-#bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
-#exec --no-startup-id pulseaudio
-#exec --no-startup-id pa-applet
-#bindsym $mod+Ctrl+m exec pavucontrol
+##exec --no-startup-id volumeicon
+####bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
+exec --no-startup-id start-pulseaudio-x11
+##exec --no-startup-id pa-applet
+bindsym $mod+Ctrl+m exec pavucontrol
 
 # volume
 # Key bindings for Media control keys
-#bindsym XF86AudioPlay exec playerctl play
-#bindsym XF86AudioPause exec playerctl pause
-#bindsym XF86AudioNext exec playerctl next
-#bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86AudioRaiseVolume exec "amixer -q set Master 2%+ unmute; notify-send "
 bindsym XF86AudioLowerVolume exec "amixer -q set Master 2%- unmute"
 bindsym XF86AudioMute exec "amixer -q set Master toggle"
 
 ################################################################################################
 
-
-
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
-bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+bindsym XF86MonBrightnessUp exec "brightnessctl s +10%; notify-send 'brightness up'"
+bindsym XF86MonBrightnessDown exec "brightnessctl s 10%-; notify-send 'brightness down'"
 
 # Start Applications
 #bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
@@ -216,12 +216,12 @@ bindsym $mod+Tab workspace next
 # to display names or symbols instead of plain workspace numbers you can use
 # something like: set $ws1 1:mail
 #                 set $ws2 2:
-set $ws1 1
-set $ws2 2
-set $ws3 3
-set $ws4 4
-set $ws5 5
-set $ws6 6
+set $ws1 1: 
+set $ws2 2: 
+set $ws3 3: 
+set $ws4 4: 
+set $ws5 5: 
+set $ws6 6: 
 set $ws7 7
 set $ws8 8
 
@@ -316,7 +316,9 @@ exec_always --no-startup-id setxkbmap pl
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #exec --no-startup-id picom --config ~/.config/picom/picom.conf
 exec --no-startup-id nm-applet
-exec --no-startup-id aw-qt &
+exec --no-startup-id kitty --session /home/$USER/.config/kitty/full_session.conf
+exec --no-startup-id aw-qt
+exec --no-startup-id /home/br/Pobrane/desktop-3.3.22.AppImage
 #exec --no-startup-id xfce4-power-manager
 #exec --no-startup-id pamac-tray
 #exec --no-startup-id clipit
@@ -515,6 +517,36 @@ no_focus [class="plasmashell" window_type="notification"]
 for_window [title="Desktop @ QRect.*"] kill;
 
 ## assign windows to workspaces
-assign [class="Google-chrome"] 1
-assign [class="Code"] 2
-assign [class="Mattermost"] 3
+assign [class="kitty"] $ws1
+assign [class="Google-chrome"] $ws2
+assign [class="Code"] $ws3
+assign [class="Mattermost"] $ws4
+assign [class="Spotify"] $ws5
+assign [class="ClickUp"] $ws4
+assign [class="obsidian"] $ws6
+
+# Start the lock screen
+exec_always --no-startup-id xautolock -detectsleep \
+    -time 15 -locker "i3lock \
+        -c 111111 \
+        --insidevercolor='#00000000' \
+        --insidewrongcolor='#00000000' \
+        --insidecolor='#00000000' \
+        --ringvercolor='#1133aa55' \
+        --ringwrongcolor='#cc222255' \
+        --ringcolor='#1133aa55' \
+        --timecolor='#eeeeeeff' \
+        --datecolor='#eeeeeeff' \
+        --linecolor='#eeeeeeff' \
+        --wrongcolor='#eeeeeeff' \
+        --separatorcolor='#00000000' \
+        --keyhlcolor='#2244bb55' \
+        --bshlcolor='#55442255' \
+        --datestr="%d-%m-%Y" \
+        --clock \
+        --textcolor='#eeeeeeff' \
+        --noinputtext="..." \
+        --veriftext='' \
+        --wrongtext=''" \
+    -notify 30 \
+    -notifier "notify-send -u normal -t 8000 'Locker' 'Locking screen in 30 seconds'"
